@@ -1,11 +1,11 @@
-import {ADD_CUSTOMER, DISPLAY_ORDER} from '../actions/index'
+import {ADD_CUSTOMER, DISPLAY_ORDER, RESET_APP} from '../actions/index'
 import {ADD_CRUST, ADD_SAUCE, ADD_TOPPINGS} from '../actions/index'
 
 const initialState = {
     
 }
 
-function OrderReducer (state = initialState, action) {
+function order (state = initialState, action) {
     console.log('[5. ORDER-REDUCER]: ', 'STATE', state,
                 'ACTION: ', action)
 
@@ -21,7 +21,7 @@ function OrderReducer (state = initialState, action) {
             console.log("[ACTION]: display order", action.payload)
             return state
 
-            case ADD_CRUST:
+        case ADD_CRUST:
             console.log("[ACTION] add crust", action.payload)
             return {
                 ...state,
@@ -42,8 +42,14 @@ function OrderReducer (state = initialState, action) {
                 ...action.payload
             }
 
-            default:
+        case RESET_APP:            
+            console.log("[ACTION] reset app", action.payload)
+            return {
+                initialState
+            }
+
+        default:
             return state
     }
 }
-export default OrderReducer
+export default order

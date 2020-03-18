@@ -1,11 +1,18 @@
-import React, {useState} from 'react'
-import { Link /*, Switch, Route*/} from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-import {connect} from 'react-redux'
+// for redux
+import { connect } from 'react-redux'
 import { addToppings } from '../redux/actions/index'
 
-const Toppings = () => {
+// ? Importing links to all component files - good practice?
+import links from '../routing/links'
 
+// Use destructuring {} to pass in functions as a prop
+const Toppings = ({addToppings}) => {
+
+    // FUTURE TODO: add costs for each topping
+    // all possible toppings options to be selected
     const toppings = [
         {id: 0, name: 'pepperoni'},
         {id: 1, name: 'sausage'},
@@ -17,36 +24,19 @@ const Toppings = () => {
         {id: 7, name: 'parmesean'}
     ]
 
+    // Hooks
     const [data, setData] = useState({
-        // toppings:[],
         toppings: []
     })
 
-    // const handleInput = event => {
-    //     console.log("[HANDLE INPUT]: ", event.currentTarget.value)
-        
-    //     let clicked = event.currentTarget.checked
-    //     console.log(clicked)
-    //     // (clicked == true) ? clicked = false : clicked =true
-    //     // if (event.currentTarget.checked == true){
-    //     //     event.currentTarget.checked = false
-    //     // }
-    //     console.log("now: " + clicked)
-
-    //     let toppings = data.toppings
-
-    //     toppings.push(event.currentTarget.value)
-    //     console.log("[HANDLE INPUT -- toppings]: ", toppings)
-    //     // setData(
-    //     //     {
-    //     //         ...data,
-    //     //         ...data.push(event.currentTarget.value)
-    //     //     }
-    //     // )
-
-    //     console.log("[HANDLE INPUT -- DATA NOW]: " , data)
-    // }
-
+    // TODO: Any way to display the list as it is being added? Or highlight the element?
+    /**
+     * Applies the useState hook's update function on the stateful value, data
+     * 
+     * @param {*} event 
+     * @returns {Object} passes the input field's value into the correct state value
+     *      - data: { toppings: [] }
+     */
     const handleAddTopping = (topping, event) => {
         console.log("in handleadd, topping = ", topping.name)
         
@@ -63,13 +53,25 @@ const Toppings = () => {
         // console.log("toppings: " + data.toppings)
     }
 
-// have to fix this -- doesn't always work!
-   const filterToppings = (arr, toppingName) => {
+    // [TODO: TEST] have to fix this -- doesn't always work!
+   /**
+    * Inspects an array for a match given an inputted value
+    * @param {array} arr - an array with toppings objects
+    * @param {string} toppingName - target topping name
+    * @returns an array containing all objects matching the truthy condition
+    */
+    const filterToppings = (arr, toppingName) => {
        return arr.filter(
             t => t.name === toppingName //? console.log("t: " + t.name) : console.log("false")
         )
    }
 
+   /**
+    * Deletes a topping from the list of selected toppings
+    * @param {Object} topping 
+    * @param {*} event 
+    * @returns a modified stateful data object via the useState hook
+    */
     const handleDeleteTopping = (topping, event) => {
         console.log("in handledelete, topping = ", topping.name)
         let tmp = [...data.toppings]
@@ -77,9 +79,9 @@ const Toppings = () => {
         // filterToppings return an array with all values that match
         // this is an object
         let currTopping = filterToppings(tmp, topping.name)[0]
-        // console.log(currTopping)
         let index = tmp.indexOf(currTopping)
         tmp.splice(index, 1)
+
         // console.log("[HANDLE DELETE]: ", tmp)
         setData(
             {
@@ -90,11 +92,24 @@ const Toppings = () => {
         
      }
 
+    // data is the payload passed into the action creator function addCrust()
     const handleButtonClick = () => {
         console.log('[3. Event handler] ' , data)
         addToppings(data)
         console.log("finished addToppings(data)")
     }
+
+     // ? Is this the best solution??????????
+     const filterLinks = (arr, linkName) => {
+        return arr.filter(
+            l => l.name === linkName 
+        )
+    }
+
+    // TODO: make the text input 'Add Crust' hard-coded
+    const filtered = filterLinks(links, 'Add Toppings')
+    const nextLink = filtered[0].next
+    const label = filtered[0].label 
 
     return(
         <div>
@@ -123,49 +138,56 @@ const Toppings = () => {
             </ul>
             
 
-        {/* <Link to="/display"> */}
-            <button 
-                onClick={handleButtonClick}
-            >
-            Next
-            </button>
-        {/* </Link> */}
+            <Link to={nextLink}>
+                <button 
+                    onClick={handleButtonClick}
+                >
+                {label}
+                </button>
+            </Link>
         </div>
     )  
 }
 
 
-function mapStateToProps(state){
+/**
+ * Using the connect() from react-redux to select the part of the store 
+ * the connected component needs.
+ * 
+ * @param {*} state - Receives the entire store state
+ * @return {*} An object with data this component needs. 
+ *      - Destructuring: assigns to a local _order object from the order reducer 
+ */
+const mapStateToProps = state => {
     console.log('[1. State of the store, mapStateToProps ]', state)
-    return{
-        pizza:state.pizza
+    return {
+        _order:state.order
     }
 }
 
+/**
+ * Using the connect() from react-redux to dispatch actions to the store.
+ * Triggers a state change.
+ * Dispatches the result of an action creator to the store by
+ * implicity forwarding arguments to the specified action creator.
+ * 
+ * @param {*} dispatch 
+ * @returns {Object}  action creator addToppings()
+ */
 const mapDispatchToProps = dispatch => {
     console.log('[. Dispatching to store, mapDispatchToProps ]', dispatch)
-    return { addToppings: data => dispatch(addToppings(data)) }
+    return {
+        addToppings: data => dispatch(addToppings(data))
+    }
 }
 
+/**
+ * React-Redux connect() function generates wrapper components 
+ * that handle the process of interacting with the Redux store.
+ * @param {function} mapStateToProps
+ * @param {function} mapDispatchToProps
+ */
 export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(Toppings)
-
-
-/* 
-<div key={topping.id}>
-<input 
-    type="radio" 
-    id={topping.id}
-    // not saying name allows multiple selected
-    // name={this.state.newPizzaSauce} 
-    // name="topping"
-    value={topping.name} 
-    onChange = { e => handleInput(e)}
-    // onChange={event => 
-    //     this.setState({newPizzaSauce:event.currentTarget.value})
-    // }
-/>
-<label>{topping.name}</label>   
-</div> */

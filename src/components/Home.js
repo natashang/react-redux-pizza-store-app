@@ -1,30 +1,28 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-import { Link /*, Switch, Route*/} from 'react-router-dom'
-
-// import links from '../routing/links'
+// ? Importing links to all component files - good practice?
+import links from '../routing/links'
 
 const Home = () => {
-
-    /*
-    const copy = links.filter(e => e.name === 'Home')
-    console.log( "copy: ", copy)
-    */
+    
+    // ? Is this the best solution??????????
+    const filterLinks = (arr, linkName) => {
+    return arr.filter(
+        l => l.name === linkName 
+     )
+}
+   const filtered = filterLinks(links, 'Home')
+   const nextLink = filtered[0].next
+   const label = filtered[0].label
 
     return(
         <div>
             <h1>Order a Pizza now!</h1>
-            <Link to="/addcustomer">
-                <button >I'm hangry, let me in!</button>
-            </Link>
-            {/* <Link to={copy.to}>
-                <Switch>
-                    <Route exact path = {copy.to} component = {copy.component}>
-                        <button >I'm hangry, let me in!</button>
 
-                    </Route>
-                </Switch>
-            </Link> */}
+            <Link to={nextLink}>
+                <button>{label}</button>
+            </Link>           
 
         </div>
     )  

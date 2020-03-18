@@ -7,54 +7,60 @@ import Toppings from '../components/Toppings.js'
 import Display from '../components/Display.js'
 
 /*
-    name: appears on the button
-    to  : URL address that appears in the browser address bar
-    comp: assigns the specific view component for that address
-    next: the next view component the app should direct
+    name     : corresponds to the React view component name
+    label    : text on UI components (buttons)
+    component: assigns the specific React view component for that address
+    path     : URL address that appears in the browser address bar
+    next     : URL address to redirect the application to
 */
 const links = [
     {
         'id'       : 1,
         'name'     :'Home',
-        'to'       :'/',
-        'component': Home,
-        'next'     : Customer
+        'label'    :"I'm hangry!",
+        'component': Home, 
+        'path'     :'/home',
+        'next'     : '/addcustomer'
     },
-
     {
         'id'       : 2,
         'name'     :'Add Customer',
-        'to'       :'/addcustomer',
+        'label'    :'Next : Crust --> ',
         'component': Customer,
-        'next'     : Crust
+        'path'     :'/addcustomer',
+        'next'     :'/addcrust'
     },
     {
         'id'       : 3,
         'name'     :'Add Crust',
-        'to'       :'/addcrust',
+        'label'    :'Next : Sauce --> ',
         'component': Crust,
-        'next'     : Sauce
+        'path'     :'/addcrust',
+        'next'     :'/addsauce'
     },
     {
         'id'       : 4,
         'name'     :'Add Sauce',
-        'to'       :'/addsauce',
+        'label'    :'Next : Toppings --> ',
         'component': Sauce,
-        'next'     : Toppings
+        'path'     :'/addsauce',
+        'next'     :'/addToppings'
     },
     {
         'id'       : 5,
         'name'     :'Add Toppings',
-        'to'       :'/addtoppings',
+        'label'    :'Display My Order!',
         'component': Toppings,
-        'next'     : Display
+        'path'     :'/addtoppings',
+        'next'     :'/display'
     },
     {
         'id'       : 6,
-        'name'     :'Display',
-        'to'       :'/display',
+        'name'     :'Display Order',
+        'label'    :'Done',
         'component': Display,
-        'next'     : Home
+        'path'     :'/display',
+        'next'     :'/home'
     }
 ]
 export default links

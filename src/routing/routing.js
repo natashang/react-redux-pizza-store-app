@@ -14,7 +14,7 @@ const Routing = () => {
              {links.map( link => {
                 return(
                     <button key = {link.id} >
-                        <Link to={link.to}>{link.name}</Link>
+                        <Link to={link.path}>{link.name}</Link>
                     </button>
                 )
             })}   
@@ -26,7 +26,7 @@ const Routing = () => {
                         return(
                             <Route 
                                 exact
-                                path = {link.to} 
+                                path = {link.path} 
                                 component = {link.component}
                                 key = {link.id}    
                             />
@@ -43,7 +43,6 @@ const Routing = () => {
 
         </Router>
     )
-   
 }
 
 export default Routing
