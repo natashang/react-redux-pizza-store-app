@@ -12,16 +12,21 @@ const Home = () => {
     const progress = currLink.progress
 
     return(
-        <div>
+        <>
                 <ProgressBar animated now = {progress}/>
 
                 <h1>Pizza Delivery Shop</h1>
-                <p>Build your own pizza in seconds! We offer a wide selection of locally sourced ingredients. We also do delivery! </p>
+                <p>Welcome! Build your own pizza in seconds! We offer a wide selection of locally sourced ingredients. We also do delivery! </p>
 
                 <Link to={currLink.next}>
                     <Button>{currLink.label}</Button>
                 </Link> 
-        </div>
+
+                <br /><br/>
+
+                <p>This project is hosted on GitHub Pages and is available for viewing.</p>
+                <a href="https://github.com/natashang/react-redux-pizza-store-app">View code here</a>    
+        </>
     )  
 }
 
