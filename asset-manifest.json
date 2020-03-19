@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-redux-pizza-store-app/home/static/css/main.5f361e03.chunk.css",
-    "main.js": "/react-redux-pizza-store-app/home/static/js/main.f2b41112.chunk.js",
-    "main.js.map": "/react-redux-pizza-store-app/home/static/js/main.f2b41112.chunk.js.map",
+    "main.js": "/react-redux-pizza-store-app/home/static/js/main.e2ed3486.chunk.js",
+    "main.js.map": "/react-redux-pizza-store-app/home/static/js/main.e2ed3486.chunk.js.map",
     "runtime-main.js": "/react-redux-pizza-store-app/home/static/js/runtime-main.2874cb53.js",
     "runtime-main.js.map": "/react-redux-pizza-store-app/home/static/js/runtime-main.2874cb53.js.map",
     "static/css/2.de424728.chunk.css": "/react-redux-pizza-store-app/home/static/css/2.de424728.chunk.css",
     "static/js/2.1154060a.chunk.js": "/react-redux-pizza-store-app/home/static/js/2.1154060a.chunk.js",
     "static/js/2.1154060a.chunk.js.map": "/react-redux-pizza-store-app/home/static/js/2.1154060a.chunk.js.map",
     "index.html": "/react-redux-pizza-store-app/home/index.html",
-    "precache-manifest.d39f6619e1594e3f771ef94317b4131e.js": "/react-redux-pizza-store-app/home/precache-manifest.d39f6619e1594e3f771ef94317b4131e.js",
+    "precache-manifest.7ffb4ce7b426ee3485a293d2ce0d94af.js": "/react-redux-pizza-store-app/home/precache-manifest.7ffb4ce7b426ee3485a293d2ce0d94af.js",
     "service-worker.js": "/react-redux-pizza-store-app/home/service-worker.js",
     "static/css/2.de424728.chunk.css.map": "/react-redux-pizza-store-app/home/static/css/2.de424728.chunk.css.map",
     "static/css/main.5f361e03.chunk.css.map": "/react-redux-pizza-store-app/home/static/css/main.5f361e03.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.de424728.chunk.css",
     "static/js/2.1154060a.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.f2b41112.chunk.js"
+    "static/js/main.e2ed3486.chunk.js"
   ]
 }
