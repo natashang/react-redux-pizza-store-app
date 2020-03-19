@@ -1,30 +1,29 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+import {ProgressBar, Table} from 'react-bootstrap'
 
-// ? Importing links to all component files - good practice?
-import links from '../routing/links'
+import PrevNextButtons from './presentation/PrevNextButtons'
+import getLinkInfo from '../utils/getLinkInfo'
+
+import { connect } from 'react-redux'
+import {resetApp} from '../redux/actions/index'
+
+import links from '../utils/links'
+
 
 // Use destructuring {} to pass in a state's reducer function (order) as a props
-const Display = ({ _order }) => {  
-
-    // ? Is this the best solution??????????
-    const filterLinks = (arr, linkName) => {
-        return arr.filter(
-            l => l.name === linkName 
-        )
-    }
-    
-    const filtered = filterLinks(links, 'Display Order')
-    const nextLink = filtered[0].next
-    const label = filtered[0].label 
+const Display = ({ _order, resetApp }) => {  
+   
+    const currLink = getLinkInfo(links, 'Display Order')
+    const progress = currLink.progress
 
     return(
         <div>
-            <h1>Hey customer, here's your final order</h1>
+            <ProgressBar animated now = {progress}/>
+
+            <h1>Here's your final order</h1>
             
-            <table>
-                <tbody>
+            <Table bordered>
+            <tbody>
                 <tr>
                     <td>Name</td>
                     <td>{_order.name}</td>
@@ -66,19 +65,19 @@ const Display = ({ _order }) => {
                     </td>
                 </tr>
                 </tbody>
-               
-            </table>
+            </Table>            
             
-            <Link to={nextLink}>
-                <button 
-                    // function call for reset app here
-                >
-                {label}
-                </button>
-            </Link>
+            <PrevNextButtons
+                    prev = {currLink.prev}
+                    plabel = {currLink.plabel}
+                    next = {currLink.next}
+                    nlabel = {currLink.nlabel}
+                    handleButtonClick={resetApp}
+                />
         </div>
     )  
 }
+
 /**
  * Using the connect() from react-redux to select the part of the store 
  * the connected component needs.
@@ -88,10 +87,24 @@ const Display = ({ _order }) => {
  *      - Destructuring: assigns to a local _order object from the order reducer 
  */
 const mapStateToProps = state => {
-    console.log('[1. State of the store, mapStateToProps ]', state)
+    // console.log('[DISPLAY 1. State of the store, mapStateToProps ]', state)
     return {
         _order:state.order
     }
+}
+
+/**
+ * Using the connect() from react-redux to dispatch actions to the store.
+ * Triggers a state change.
+ * Dispatches the result of an action creator to the store by
+ * implicity forwarding arguments to the specified action creator.
+ * 
+ * @param {*} dispatch 
+ * @returns {Object}  action creator addToppings()
+ */
+const mapDispatchToProps = dispatch => {
+    // console.log('[DISPLAY. Dispatching to store, mapDispatchToProps ]', dispatch)
+    return { resetApp: () => dispatch(resetApp())}
 }
 
 /**
@@ -100,5 +113,6 @@ const mapStateToProps = state => {
  * @param {function} mapStateToProps
  */
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Display)

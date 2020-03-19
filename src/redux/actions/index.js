@@ -8,11 +8,8 @@ export const DISPLAY_ORDER = 'DISPLAY_ORDER'
 export const RESET_APP    = 'RESET_APP'
 
 /* action creators */
-
-// Should I update all of these ACs below to ES6?
-// ES6: export const addCustomer = data => { ... }
+// in ES6: const addCustomer = data => {
 export function addCustomer(data){
-    console.log("in addCustomer, data: " , {data} )
     return{
         type: ADD_CUSTOMER,
         payload:{
@@ -25,8 +22,6 @@ export function addCustomer(data){
 }
 
 export function addCrust(data){
-    console.log("in addCrust, data: " , {data} )
-
     return{
         type:ADD_CRUST,
         payload:{
@@ -36,8 +31,6 @@ export function addCrust(data){
 }
 
 export function addSauce(data){
-    console.log("in addSauce(), data: " , {data} )
-
     return{
         type: ADD_SAUCE,
         payload:{
@@ -47,9 +40,6 @@ export function addSauce(data){
 }
 
 export function addToppings(data){
-
-    console.log("in addtoppings(), data: " , {data} )
-
     return{
         type: ADD_TOPPINGS,
         payload:{
@@ -59,7 +49,6 @@ export function addToppings(data){
 }
 
 export function displayOrder(data){
-    console.log("in displayOrder(), data: ", {data})
     return{
         type: DISPLAY_ORDER,
         payload:data
@@ -69,6 +58,6 @@ export function displayOrder(data){
 export function resetApp(){
     return{
         type:RESET_APP,
-        payload: null
+        payload: ''
     }
 }

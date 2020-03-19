@@ -1,10 +1,10 @@
 
-import Home from '../components/Home.js'
-import Customer from '../components/Customer.js'
-import Crust from '../components/Crust.js'
-import Sauce from '../components/Sauce.js'
-import Toppings from '../components/Toppings.js'
-import Display from '../components/Display.js'
+import Home from '../components/Home'
+import Customer from '../components/Customer'
+import Crust from '../components/Crust'
+import Sauce from '../components/Sauce'
+import Toppings from '../components/Toppings'
+import Display from '../components/Display'
 
 /*
     name     : corresponds to the React view component name
@@ -17,50 +17,71 @@ const links = [
     {
         'id'       : 1,
         'name'     :'Home',
-        'label'    :"I'm hangry!",
+        'label'    :"Click here to begin",
         'component': Home, 
         'path'     :'/home',
-        'next'     : '/addcustomer'
+        'next'     :'/addcustomer',
+        'progress' : 0
     },
     {
         'id'       : 2,
         'name'     :'Add Customer',
-        'label'    :'Next : Crust --> ',
         'component': Customer,
+        'prev'     :'/home',
         'path'     :'/addcustomer',
-        'next'     :'/addcrust'
+        'next'     :'/addcrust',
+        'plabel'   :'Back',
+        'nlabel'    :'Next',
+        'progress' : 20
     },
     {
         'id'       : 3,
         'name'     :'Add Crust',
-        'label'    :'Next : Sauce --> ',
         'component': Crust,
+        'prev'     :'/addcustomer',
         'path'     :'/addcrust',
-        'next'     :'/addsauce'
+        'next'     :'/addsauce',
+        'plabel'   :'Back',
+        'nlabel'    :'Next',
+        'progress' : 40
     },
     {
         'id'       : 4,
         'name'     :'Add Sauce',
         'label'    :'Next : Toppings --> ',
         'component': Sauce,
+        'prev'     :'/addcrust',
         'path'     :'/addsauce',
-        'next'     :'/addToppings'
+        'next'     :'/addToppings',
+        'plabel'   :'Back',
+        'nlabel'    :'Next',
+        'progress' : 60
+
     },
     {
         'id'       : 5,
         'name'     :'Add Toppings',
         'label'    :'Display My Order!',
         'component': Toppings,
+        'prev'     :'/addsauce',
         'path'     :'/addtoppings',
-        'next'     :'/display'
+        'next'     :'/display',
+        'plabel'   :'Back',
+        'nlabel'    :'Next',
+        'progress' : 80
+
     },
     {
         'id'       : 6,
         'name'     :'Display Order',
         'label'    :'Done',
         'component': Display,
+        'prev'     :'/addtoppings',
         'path'     :'/display',
-        'next'     :'/home'
+        'next'     :'/home',   
+        'plabel'   :'Back',
+        'nlabel'    :'Finish',     
+        'progress' : 100
     }
 ]
 export default links

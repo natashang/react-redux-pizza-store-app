@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import {ProgressBar, Form} from 'react-bootstrap'
+
+import PrevNextButtons from './presentation/PrevNextButtons'
+import getLinkInfo from '../utils/getLinkInfo'
 
 // for redux
 import { connect } from 'react-redux'
 import { addCrust } from '../redux/actions/index'
 
-// ? Importing links to all component files - good practice?
-import links from '../routing/links'
+import links from '../utils/links'
+
 
 // Use destructuring {} to pass in functions as a prop
 const Crust = ({ addCrust }) => {
@@ -24,15 +27,14 @@ const Crust = ({ addCrust }) => {
         crust:''
     })
 
+    const currLink = getLinkInfo(links, 'Add Crust')
+    const progress = currLink.progress
+
     // data is the payload passed into the action creator function addCrust()
     const handleButtonClick = () => {
-        console.log('[3. Event handler] ' + data)
+        // console.log('[3. Event handler] ' + data)
         addCrust(data)
-        console.log("finished addCrust(data)")
     }
-
-    // TODO: can i export these two functions 
-    // b/c they will be used in each component?
 
     /**
      * Applies the useState hook's update function on the stateful value, data
@@ -51,50 +53,42 @@ const Crust = ({ addCrust }) => {
         )
     }
 
-    // ? Is this the best solution??????????
-    const filterLinks = (arr, linkName) => {
-        return arr.filter(
-            l => l.name === linkName 
-        )
-    }
-
-    // TODO: make the text input 'Add Crust' hard-coded
-    const filtered = filterLinks(links, 'Add Crust')
-    const nextLink = filtered[0].next
-    const label = filtered[0].label 
-
     return(
         <div>
+            <ProgressBar animated now = {progress}/>
+
             <h1>Select a crust type</h1>
 
-        {
-        crusts.map( crust => {
-            return(
-                <div key={crust.id}>
-                    <input 
-                        type="radio" 
-                        id={crust.id}
-                        name="crust" // enables only one selected
-                        value={crust.name} 
-                        onChange = {e => handleInput(e)}
-                    />
-                    <label>{crust.name}</label>   
+            <Form>
+                {crusts.map( crust => {
+                    return(
+                        <div key={crust.id}>
+                                <Form.Check 
+                                    custom
+                                    id={crust.id}
+                                    type="radio" 
+                                    name="crust" // enables only one selected
+                                    label={crust.name}
+                                    value={crust.name} 
+                                    onChange = {e => handleInput(e)}
+                                />                        
+                        </div>
+                    )}
+                )}
+            </Form>
+            
+            <br />
 
-                </div>
-        )}
-    )}
-
-        <Link to={nextLink}>
-            <button 
-                onClick={handleButtonClick}
-            >
-                {label}
-            </button>
-        </Link>
+            <PrevNextButtons
+                    prev = {currLink.prev}
+                    plabel = {currLink.plabel}
+                    next = {currLink.next}
+                    nlabel = {currLink.nlabel}
+                    handleButtonClick={handleButtonClick}
+                />
     </div>
     )  
 }
-
 
 /**
  * Using the connect() from react-redux to select the part of the store 
@@ -105,7 +99,7 @@ const Crust = ({ addCrust }) => {
  *      - Destructuring: assigns to a local _order object from the order reducer 
  */
 const mapStateToProps = state => {
-    console.log('[1. State of the store, mapStateToProps ]', state)
+    // console.log('[1. State of the store, mapStateToProps ]', state)
     return {
         _order:state.order
     }
@@ -121,7 +115,7 @@ const mapStateToProps = state => {
  * @returns {Object}  action creator addCrust()
  */
 const mapDispatchToProps = dispatch => {
-    console.log('[. Dispatching to store, mapDispatchToProps ]', dispatch)
+    // console.log('[. Dispatching to store, mapDispatchToProps ]', dispatch)
     return {
         addCrust: data => dispatch(addCrust(data))
     }
