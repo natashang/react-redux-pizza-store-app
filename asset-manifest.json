@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/react-redux-pizza-store-app/home/static/css/main.5f361e03.chunk.css",
-    "main.js": "/react-redux-pizza-store-app/home/static/js/main.e2ed3486.chunk.js",
-    "main.js.map": "/react-redux-pizza-store-app/home/static/js/main.e2ed3486.chunk.js.map",
-    "runtime-main.js": "/react-redux-pizza-store-app/home/static/js/runtime-main.2874cb53.js",
-    "runtime-main.js.map": "/react-redux-pizza-store-app/home/static/js/runtime-main.2874cb53.js.map",
-    "static/css/2.de424728.chunk.css": "/react-redux-pizza-store-app/home/static/css/2.de424728.chunk.css",
-    "static/js/2.1154060a.chunk.js": "/react-redux-pizza-store-app/home/static/js/2.1154060a.chunk.js",
-    "static/js/2.1154060a.chunk.js.map": "/react-redux-pizza-store-app/home/static/js/2.1154060a.chunk.js.map",
-    "index.html": "/react-redux-pizza-store-app/home/index.html",
-    "precache-manifest.7ffb4ce7b426ee3485a293d2ce0d94af.js": "/react-redux-pizza-store-app/home/precache-manifest.7ffb4ce7b426ee3485a293d2ce0d94af.js",
-    "service-worker.js": "/react-redux-pizza-store-app/home/service-worker.js",
-    "static/css/2.de424728.chunk.css.map": "/react-redux-pizza-store-app/home/static/css/2.de424728.chunk.css.map",
-    "static/css/main.5f361e03.chunk.css.map": "/react-redux-pizza-store-app/home/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.1154060a.chunk.js.LICENSE.txt": "/react-redux-pizza-store-app/home/static/js/2.1154060a.chunk.js.LICENSE.txt"
+    "main.css": "/react-redux-pizza-store-app/static/css/main.5f361e03.chunk.css",
+    "main.js": "/react-redux-pizza-store-app/static/js/main.46697686.chunk.js",
+    "main.js.map": "/react-redux-pizza-store-app/static/js/main.46697686.chunk.js.map",
+    "runtime-main.js": "/react-redux-pizza-store-app/static/js/runtime-main.01c5b234.js",
+    "runtime-main.js.map": "/react-redux-pizza-store-app/static/js/runtime-main.01c5b234.js.map",
+    "static/css/2.de424728.chunk.css": "/react-redux-pizza-store-app/static/css/2.de424728.chunk.css",
+    "static/js/2.1154060a.chunk.js": "/react-redux-pizza-store-app/static/js/2.1154060a.chunk.js",
+    "static/js/2.1154060a.chunk.js.map": "/react-redux-pizza-store-app/static/js/2.1154060a.chunk.js.map",
+    "index.html": "/react-redux-pizza-store-app/index.html",
+    "precache-manifest.143519ad6b54bee724295c9f4aa04705.js": "/react-redux-pizza-store-app/precache-manifest.143519ad6b54bee724295c9f4aa04705.js",
+    "service-worker.js": "/react-redux-pizza-store-app/service-worker.js",
+    "static/css/2.de424728.chunk.css.map": "/react-redux-pizza-store-app/static/css/2.de424728.chunk.css.map",
+    "static/css/main.5f361e03.chunk.css.map": "/react-redux-pizza-store-app/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.1154060a.chunk.js.LICENSE.txt": "/react-redux-pizza-store-app/static/js/2.1154060a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.2874cb53.js",
+    "static/js/runtime-main.01c5b234.js",
     "static/css/2.de424728.chunk.css",
     "static/js/2.1154060a.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.e2ed3486.chunk.js"
+    "static/js/main.46697686.chunk.js"
   ]
 }
