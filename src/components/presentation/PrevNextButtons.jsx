@@ -10,7 +10,7 @@ const PrevNextButtons = (props) => {
         <Row>
             <Col>
                 <Link to={props.prev}>
-                    <Button>
+                    <Button> 
                         {props.plabel}
                     </Button>
                 </Link>

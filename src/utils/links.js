@@ -8,56 +8,54 @@
 
 */
 const links = [
-    {
-        'name'     :'Home',
-        'label'    :"Click here to begin",
-        'next'     :'/addcustomer',
-        'progress' : 0
-    },
-    {
-        'name'     :'Add Customer',
-        'prev'     :'/',
-        'next'     :'/addcrust',
-        'plabel'   :'Back',
-        'nlabel'    :'Next',
-        'progress' : 20
-    },
-    {
-        'name'     :'Add Crust',
-        'prev'     :'/addcustomer',
-        'next'     :'/addsauce',
-        'plabel'   :'Back',
-        'nlabel'    :'Next',
-        'progress' : 40
-    },
-    {
-        'name'     :'Add Sauce',
-        'label'    :'Next : Toppings --> ',
-        'prev'     :'/addcrust',
-        'next'     :'/addToppings',
-        'plabel'   :'Back',
-        'nlabel'    :'Next',
-        'progress' : 60
-
-    },
-    {
-        'name'     :'Add Toppings',
-        'label'    :'Display My Order!',
-        'prev'     :'/addsauce',
-        'next'     :'/display',
-        'plabel'   :'Back',
-        'nlabel'    :'Next',
-        'progress' : 80
-
-    },
-    {
-        'name'     :'Display Order',
-        'label'    :'Done',
-        'prev'     :'/addtoppings',
-        'next'     :'/',   
-        'plabel'   :'Back',
-        'nlabel'    :'Finish',     
-        'progress' : 100
-    }
-]
-export default links
+  {
+    name: "Home",
+    label: "Click here to begin",
+    next: "/addcustomer",
+    progress: 0
+  },
+  {
+    name: "Add Customer",
+    prev: "/",
+    next: "/addcrust",
+    plabel: "Back",
+    nlabel: "Next",
+    progress: 20
+  },
+  {
+    name: "Add Crust",
+    prev: "/addcustomer",
+    next: "/addsauce",
+    plabel: "Back",
+    nlabel: "Next",
+    progress: 40
+  },
+  {
+    name: "Add Sauce",
+    label: "Next : Toppings --> ",
+    prev: "/addcrust",
+    next: "/addToppings",
+    plabel: "Back",
+    nlabel: "Next",
+    progress: 60
+  },
+  {
+    name: "Add Toppings",
+    label: "Display My Order!",
+    prev: "/addsauce",
+    next: "/display",
+    plabel: "Back",
+    nlabel: "Next",
+    progress: 80
+  },
+  {
+    name: "Display Order",
+    label: "Done",
+    prev: "/addtoppings",
+    next: "/",
+    plabel: "Back",
+    nlabel: "Finish",
+    progress: 100
+  }
+];
+export default links;

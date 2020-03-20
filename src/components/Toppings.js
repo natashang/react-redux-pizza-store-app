@@ -102,7 +102,7 @@ const Toppings = ({ addToppings }) => {
     }
     
     return(
-        <div>
+        <>
             <ProgressBar animated now = {progress}/>
 
             <h1>Select your toppings</h1>
@@ -135,7 +135,7 @@ const Toppings = ({ addToppings }) => {
                     nlabel = {currLink.nlabel}
                     handleButtonClick={handleButtonClick}
                 />
-        </div>
+        </>
     )  
 }
 

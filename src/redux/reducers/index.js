@@ -1,6 +1,6 @@
-import {combineReducers} from 'redux'
-import order from './order'
+import { combineReducers } from "redux";
+import order from "./order";
 
 export default combineReducers({
-    order
-})
+  order
+});
